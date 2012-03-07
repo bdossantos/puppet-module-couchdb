@@ -1,19 +1,19 @@
 class couchdb::ssl {
-    
-    package { 
-		['openssl']:
+
+    package {
+        ['openssl']:
         ensure => 'installed',
     }
-    
+
     file {
         $couchdb::cert_path:
-		ensure  => 'directory',
+        ensure  => 'directory',
         mode    => '0600',
-		owner   => 'couchdb',
-		group   => 'couchdb';
-	}
-    
-    exec { 
+        owner   => 'couchdb',
+        group   => 'couchdb';
+    }
+
+    exec {
         'generate-certs':
         command => "/usr/bin/openssl req -new -inform PEM -x509 -nodes -days 999 -subj \
                     '/C=ZZ/ST=AutoSign/O=AutoSign/localityName=AutoSign/commonName=${::hostname}/organizationalUnitName=AutoSign/emailAddress=AutoSign/' \
