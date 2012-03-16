@@ -82,7 +82,7 @@ class couchdb::install {
         target  => '/usr/local/etc/init.d/couchdb',
         require => Exec['make-install'];
 
-        '/usr/local/etc/logrotate.d/couchdb':
+        ['/usr/local/etc/logrotate.d/couchdb', '/etc/logrotate.d/couchdb']:
         ensure  => 'file',
         content => template('couchdb/usr/local/etc/logrotate.d/couchdb.erb'),
         require => Exec['make-install'];
