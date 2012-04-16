@@ -21,6 +21,7 @@ Clone this repo to a couchdb directory under your Puppet modules directory :
 * SSL cert options
 * configure builds options
 * dynamic foldername, filename, extension
+* Tests w/ rspec-puppet
 
 
 
