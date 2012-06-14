@@ -5,8 +5,7 @@ class couchdb::install {
     }
 
     package {
-        ['build-essential', 'erlang', 'libicu-dev',
-        'libmozjs-dev', 'libcurl4-openssl-dev', 'curl']:
+      $couchdb::packages :
         ensure => 'installed',
     }
 
@@ -51,10 +50,7 @@ class couchdb::install {
         timeout => '600',
         require => [
             Exec['extract'],
-            Package[
-                'build-essential', 'erlang', 'libicu-dev',
-                'libmozjs-dev', 'libcurl4-openssl-dev', 'curl'
-            ]
+            Package[$couchdb::packages]
         ],
     }
 
