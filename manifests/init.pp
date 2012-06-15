@@ -15,33 +15,8 @@ class couchdb($download = 'http://mirrors.ircam.fr/pub/apache/couchdb/1.1.1/apac
               $cert_path = '/usr/local/etc/certs',
               $ulimit = '65536') {
 
-    case $operatingsystem {
-      'Ubuntu': {
-        case $operatingsystemrelease {
-          '10.04': {
-            $packages = ['build-essential',
-                         'xulrunner-1.9.2-dev',
-                         'libicu-dev',
-                         'libcurl4-gnutls-dev',
-                         'libtool',
-                         'erlang-eunit']
-            $buildoptions = '--with-js-include=/usr/lib/xulrunner-devel-1.9.2.28/include --with-js-lib=/usr/lib/xulrunner-devel-1.9.2.28/lib'
-          }
-          default: {}
-        }
-      }
-      default: {
-        $packages = ['build-essential',
-                              'erlang',
-                              'libicu-dev',
-                              'libmozjs-dev',
-                              'libcurl4-openssl-dev',
-                              'curl']
-        $buildoptions = $buildopts
-      }
-    }
-
-    include couchdb::install,
+    include couchdb::package,
+            couchdb::install,
             couchdb::service,
             couchdb::ssl
 }

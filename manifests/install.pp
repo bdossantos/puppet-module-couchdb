@@ -5,7 +5,7 @@ class couchdb::install {
     }
 
     package {
-      $couchdb::packages :
+        $couchdb::package::dependencies:
         ensure => 'installed',
     }
 
@@ -46,11 +46,11 @@ class couchdb::install {
     exec {
         'configure':
         cwd     => "${couchdb::cwd}/${couchdb::foldername}",
-        command => "${couchdb::cwd}/${couchdb::foldername}/configure ${couchdb::buildoptions}",
+        command => "${couchdb::cwd}/${couchdb::foldername}/configure ${couchdb::package::buildoptions}",
         timeout => '600',
         require => [
             Exec['extract'],
-            Package[$couchdb::packages]
+            Package[$couchdb::package::dependencies]
         ],
     }
 
