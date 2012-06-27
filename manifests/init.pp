@@ -15,8 +15,8 @@ class couchdb($download = 'http://mirrors.ircam.fr/pub/apache/couchdb/1.1.1/apac
               $cert_path = '/usr/local/etc/certs',
               $ulimit = '65536') {
 
-    include couchdb::package,
-            couchdb::install,
-            couchdb::service,
-            couchdb::ssl
+  include couchdb::package,
+          couchdb::install,
+          couchdb::service,
+          couchdb::ssl
 }
