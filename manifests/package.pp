@@ -19,13 +19,13 @@ class couchdb::package {
           $buildoptions = '--with-js-include=/usr/lib/xulrunner-devel-1.9.2.28/include --with-js-lib=/usr/lib/xulrunner-devel-1.9.2.28/lib'
 
           file { '/etc/ld.so.conf.d/xulrunner.conf':
-            ensure => 'file',
+            ensure  => 'file',
             content => template('couchdb/etc/ld.so.conf.d/xulrunner.conf.erb'),
           }
 
           exec { '/sbin/ldconfig':
             require => File['/etc/ld.so.conf.d/xulrunner.conf'],
-            notify => Service['couchdb'],
+            notify  => Service['couchdb'],
           }
         }
         default: {}
