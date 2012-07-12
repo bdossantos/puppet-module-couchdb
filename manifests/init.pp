@@ -20,32 +20,3 @@ class couchdb($download = 'http://mirrors.ircam.fr/pub/apache/couchdb/1.1.1/apac
           couchdb::service,
           couchdb::ssl
 }
-
-# == Definition: couchdb::conf
-#
-# This definition installs a couchdb configuration for an application.
-#
-# === Sample Usage:
-#
-# The following installs the npm-dev config into local.d configs and
-# restarts the couchdb service.
-#    couchdb::conf{ 'npm-dev':
-#      $config => template('npmjs/etc/couchdb/local.d/npmjs.erb');
-#    }
-#
-define couchdb::conf($config = false, $isDefault = false) {
-
-  $config_path = $isDefault ? {
-    false   => '/usr/local/etc/couchdb/local.d',
-    default => '/usr/local/etc/couchdb/default.d',
-  }
-
-  file { "${config_path}/${name}.ini":
-    require => Exec['make-install'],
-    ensure  => present,
-    owner   => 'couchdb',
-    group   => 'couchdb',
-    notify  => Service['couchdb'],
-    content => $config;
-  }
-}
