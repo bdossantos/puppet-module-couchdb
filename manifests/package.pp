@@ -13,8 +13,8 @@ class couchdb::package {
             'libicu-dev',
             'libcurl4-gnutls-dev',
             'libtool',
+            'erlang',
             'erlang-eunit',
-            'erlang-dev',
           ]
           $buildoptions = '--with-js-include=/usr/lib/xulrunner-devel-1.9.2.28/include --with-js-lib=/usr/lib/xulrunner-devel-1.9.2.28/lib'
         }
