@@ -34,8 +34,11 @@ class couchdb($download = 'http://mirrors.ircam.fr/pub/apache/couchdb/1.1.1/apac
 #    }
 #
 define couchdb::conf($config = false, $isDefault = false) {
-  $config_path = $isDefault ? { false => '/usr/local/etc/couchdb/local.d',
-                                default => '/usr/local/etc/couchdb/default.d' }
+
+  $config_path = $isDefault ? {
+    false   => '/usr/local/etc/couchdb/local.d',
+    default => '/usr/local/etc/couchdb/default.d',
+  }
 
   file { "${config_path}/${name}.ini":
     require => Exec['make-install'],
