@@ -1,4 +1,4 @@
 # File is managed by Puppet
 # <domain>    <type>    <item>    <value>
-couchdb      hard      nofile    <%= ulimit %>
-couchdb      soft      nofile    <%= ulimit %>
+couchdb      hard      nofile    <%= @ulimit %>
+couchdb      soft      nofile    <%= @ulimit %>

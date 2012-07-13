@@ -7,8 +7,8 @@
 ; overwritten on server upgrade.
 
 [couchdb]
-database_dir = <%= database_dir %>
-view_index_dir = <%= view_index_dir %>
+database_dir = <%= @database_dir %>
+view_index_dir = <%= @view_index_dir %>
 ;util_driver_dir = /usr/local/lib/couchdb/erlang/lib/couch-1.1.1/priv/lib
 ;max_document_size = 4294967296 ; 4 GB
 ;os_process_timeout = 5000 ; 5 seconds. for view and external servers.
@@ -18,7 +18,7 @@ view_index_dir = <%= view_index_dir %>
 
 [httpd]
 port = 5984
-bind_address = <%= bind %>
+bind_address = <%= @bind %>
 ; Options for the MochiWeb HTTP server.
 ;server_options = [{backlog, 128}, {acceptor_pool_size, 16}]
 ; For more socket options, consult Erlang's module 'inet' man page.
@@ -44,8 +44,8 @@ bind_address = <%= bind %>
 ; require_valid_user = false
 
 [log]
-file = <%= log_file %>
-level = <%= log_level %>
+file = <%= @log_file %>
+level = <%= @log_level %>
 include_sasl = true
 
 [os_daemons]
@@ -59,17 +59,17 @@ include_sasl = true
 ; please let us know on the mailing list so we can fine tune the heuristic.
 [query_server_config]
 reduce_limit = true
-os_process_limit = <%= os_process_limit %>
+os_process_limit = <%= @os_process_limit %>
 
 [daemons]
 ; enable SSL support by uncommenting the following line and supply the PEM's below.
 ; the default ssl port CouchDB listens on is 6984
-<% if cert_path %>
+<% if @cert_path %>
 httpsd = {couch_httpd, start_link, [https]}
 
 [ssl]
-cert_file = <%= cert_path %>/couchdb_cert.pem
-key_file = <%= cert_path %>/couchdb_key.pem
+cert_file = <%= @cert_path %>/couchdb_cert.pem
+key_file = <%= @cert_path %>/couchdb_key.pem
 <% end %>
 
 ; To enable Virtual Hosts in CouchDB, add a vhost = path directive. All requests to
@@ -103,4 +103,4 @@ key_file = <%= cert_path %>/couchdb_key.pem
 ;     random prefix is regenerated and the process starts over.
 ;   utc_random - Time since Jan 1, 1970 UTC with microseconds
 ;     First 14 characters are the time in hex. Last 18 are random.
-algorithm = <%= uuids %>
+algorithm = <%= @uuids %>
