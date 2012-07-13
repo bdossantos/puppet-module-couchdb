@@ -12,7 +12,7 @@ Vagrant::Config.run do |config|
   # Customize memory
   config.vm.customize ["modifyvm", :id, "--memory", "256"]
   
-  config.vm.provision :shell, :inline => "apt-get update"
+  config.vm.provision :shell, :inline => "[ -f /tmp/updated ] || apt-get update && touch /tmp/updated"
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "../"
