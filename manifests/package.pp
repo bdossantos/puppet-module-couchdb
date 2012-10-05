@@ -1,7 +1,13 @@
 class couchdb::package {
 
-  package { ['curl', 'build-essential']:
+  package { 'build-essential':
     ensure => 'installed',
+  }
+
+  if !defined(Package['curl']) {
+    package { 'curl':
+      ensure => 'installed',
+    }
   }
 
   case $operatingsystem {
