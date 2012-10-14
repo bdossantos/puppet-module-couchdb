@@ -1,12 +1,12 @@
 class couchdb::package {
 
   package { 'build-essential':
-    ensure => 'installed',
+    ensure => installed,
   }
 
   if !defined(Package['curl']) {
     package { 'curl':
-      ensure => 'installed',
+      ensure => installed,
     }
   }
 
@@ -25,7 +25,7 @@ class couchdb::package {
           $buildoptions = '--with-js-include=/usr/lib/xulrunner-devel-1.9.2.28/include --with-js-lib=/usr/lib/xulrunner-devel-1.9.2.28/lib'
 
           file { '/etc/ld.so.conf.d/xulrunner.conf':
-            ensure  => 'file',
+            ensure  => file,
             content => template('couchdb/etc/ld.so.conf.d/xulrunner.conf.erb'),
           }
 

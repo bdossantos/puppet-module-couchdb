@@ -9,7 +9,7 @@ class couchdb::install {
   }
 
   user { 'couchdb':
-    ensure      => 'present',
+    ensure      => present,
     home        => '/usr/local/var/lib/couchdb',
     managehome  => false,
     comment     => 'CouchDB Administrator',
@@ -17,7 +17,7 @@ class couchdb::install {
   }
 
   file { '/usr/local/etc/couchdb/local.ini':
-    ensure  => 'file',
+    ensure  => file,
     mode    => '0644',
     owner   => 'couchdb',
     group   => 'couchdb',
@@ -58,7 +58,7 @@ class couchdb::install {
   file {
     [$couchdb::database_dir, '/usr/local/etc/couchdb',
     '/usr/local/var/log/couchdb', '/usr/local/var/run/couchdb']:
-    ensure  => 'directory',
+    ensure  => directory,
     owner   => 'couchdb',
     group   => 'couchdb',
     mode    => '2755',
@@ -66,19 +66,19 @@ class couchdb::install {
   }
 
   file { '/etc/init.d/couchdb':
-    ensure  => 'link',
+    ensure  => link,
     target  => '/usr/local/etc/init.d/couchdb',
     require => Exec['make-install'];
   }
 
   file { ['/usr/local/etc/logrotate.d/couchdb', '/etc/logrotate.d/couchdb']:
-    ensure  => 'file',
+    ensure  => file,
     content => template('couchdb/usr/local/etc/logrotate.d/couchdb.erb'),
     require => Exec['make-install'];
   }
 
   file { '/etc/security/limits.d/100-couchdb.conf':
-    ensure  => 'file',
+    ensure  => file,
     content => template('couchdb/etc/security/limits.d/100-couchdb.conf.erb'),
     require => Exec['make-install'];
   }

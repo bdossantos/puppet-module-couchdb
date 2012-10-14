@@ -1,11 +1,11 @@
 class couchdb::ssl {
 
   package { ['openssl']:
-    ensure => 'installed',
+    ensure => installed,
   }
 
   file { $couchdb::cert_path:
-    ensure  => 'directory',
+    ensure  => directory,
     mode    => '0600',
     owner   => 'couchdb',
     group   => 'couchdb';
