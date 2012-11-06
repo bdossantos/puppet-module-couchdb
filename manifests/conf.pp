@@ -18,10 +18,10 @@ define couchdb::conf($config = false, $isDefault = false) {
   }
 
   file { "${config_path}/${name}.ini":
-    require => Exec['make-install'],
     ensure  => present,
     owner   => 'couchdb',
     group   => 'couchdb',
+    require => Exec['make-install'],
     notify  => Service['couchdb'],
     content => $config;
   }
