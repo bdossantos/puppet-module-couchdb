@@ -10,9 +10,9 @@ class couchdb::package {
     }
   }
 
-  case $operatingsystem {
+  case $::operatingsystem {
     'Ubuntu': {
-      case $operatingsystemrelease {
+      case $::operatingsystemrelease {
         '10.04': {
           $dependencies = [
             'xulrunner-1.9.2-dev',
@@ -44,7 +44,7 @@ class couchdb::package {
         'libmozjs-dev',
         'libcurl4-openssl-dev',
       ]
-      $buildoptions = $buildopts
+      $buildoptions = $couchdb::buildopts
     }
   }
 }
