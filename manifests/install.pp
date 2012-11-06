@@ -93,5 +93,6 @@ class couchdb::install {
         require => Exec['make-install'],
       }
     }
+    default: {}
   }
 }
