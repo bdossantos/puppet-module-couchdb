@@ -7,6 +7,7 @@ class couchdb($download = 'http://apache.cu.be/couchdb/releases/1.2.0/apache-cou
               $rm_build_folder = false,
               $bind = '127.0.0.1',
               $basic_realm = undef,
+              $require_valid_user = false,
               $database_dir = '/usr/local/var/lib/couchdb',
               $view_index_dir = '/usr/local/var/lib/couchdb',
               $log_file = '/usr/local/var/log/couchdb/couch.log',
