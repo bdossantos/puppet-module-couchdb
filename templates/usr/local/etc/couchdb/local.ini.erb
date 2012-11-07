@@ -95,7 +95,11 @@ key_file = <%= @cert_path %>/couchdb_key.pem
 ; 'username = password' lines. Don't forget to restart CouchDB after
 ; changing this.
 [admins]
+<% if @admin_passwd -%>
+admin = <%= @admin_passwd %>
+<% else -%>
 ;admin = mysecretpassword
+<% end -%>
 
 [uuids]
 ; Known algorithms:
