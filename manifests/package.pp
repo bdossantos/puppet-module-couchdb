@@ -34,7 +34,19 @@ class couchdb::package {
             notify  => Service['couchdb'],
           }
         }
-        default: {}
+        default: {
+          $dependencies = [
+            'erlang-base',
+            'erlang-dev',
+            'erlang-eunit',
+            'erlang-nox',
+            'libicu-dev',
+            'libmozjs-dev',
+            'libcurl4-gnutls-dev',
+            'libtool',
+          ]
+          $buildoptions = $couchdb::buildopts
+	}
       }
     }
     default: {
