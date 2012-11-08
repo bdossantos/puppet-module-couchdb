@@ -15,6 +15,7 @@ view_index_dir = <%= @view_index_dir %>
 ;max_dbs_open = 100
 ;delayed_commits = true ; set this to false to ensure an fsync before 201 Created is returned
 ;uri_file = /usr/local/var/run/couchdb/couch.uri
+<% if @version == '1.2' -%>
 ; Method used to compress everything that is appended to database and view index files, except
 ; for attachments (see the attachments section). Available methods are:
 ;
@@ -32,6 +33,7 @@ checkpoint_after = 5242880 ; checkpoint after every N bytes were written
 [view_compaction]
 ; larger buffer sizes can originate smaller files
 keyvalue_buffer_size = 2097152 ; value in bytes
+<% end -%>
 
 [httpd]
 port = 5984
@@ -134,6 +136,7 @@ admin = <%= @admin_passwd %>
 ;     First 14 characters are the time in hex. Last 18 are random.
 algorithm = <%= @uuids %>
 
+<% if @version == '1.2' -%>
 [stats]
 ; rate is in milliseconds
 rate = 1000
@@ -268,3 +271,4 @@ min_file_size = 131072
 ;    compacted in parallel.
 ;
 ;_default = [{db_fragmentation, "70%"}, {view_fragmentation, "60%"}, {from, "23:00"}, {to, "04:00"}]
+<% end -%>

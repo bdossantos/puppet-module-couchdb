@@ -1,5 +1,9 @@
 class couchdb::install {
 
+  if versioncmp($couchdb::foldername, 'apache-couchdb-1.2.0') >= 0 {
+    $version = '1.2'
+  }
+
   Exec {
     unless => '/usr/bin/test -f /usr/local/bin/couchdb',
   }
