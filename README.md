@@ -22,16 +22,36 @@ git clone git://github.com/Benjamin-Ds/puppet-module-couchdb.git couchdb
 
 ## Usage
 
+### Puppet master-less
+
 ```bash
 puppet apply -e "class { 'couchdb': bind => '0.0.0.0' }"
 ```
 
-Test with Vagrant + Ubuntu Lucid 32 :
+### With Vagrant + Ubuntu Precise 64 :
 
 ```bash
 vagrant up
 curl 127.0.0.1:5984
 open http://127.0.0.1:5984/_utils/
+```
+
+### Install older version than v1.2.0
+
+```puppet
+# site.pp
+node default {
+  class { 'couchdb':
+    bind        => '0.0.0.0',
+    download    => 'http://mirrors.ircam.fr/pub/apache/couchdb/1.1.1/apache-couchdb-1.1.1.tar.gz',
+    filename    => 'apache-couchdb-1.1.1.tar.gz',
+    foldername  => 'apache-couchdb-1.1.1',
+  }
+}
+```
+
+```bash
+puppet apply /path/to/site.pp --modulepath /etc/puppet/modules --logdest console
 ```
 
 ## TODO
