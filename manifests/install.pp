@@ -39,22 +39,22 @@ class couchdb::install {
   }
 
   exec { 'configure':
-    cwd     => "${couchdb::cwd}/${couchdb::foldername}",
+    cwd         => "${couchdb::cwd}/${couchdb::foldername}",
     environment => 'HOME=/root',
-    command => "${couchdb::cwd}/${couchdb::foldername}/configure ${couchdb::package::buildoptions}",
-    timeout => '600',
-    require => [
+    command     => "${couchdb::cwd}/${couchdb::foldername}/configure ${couchdb::package::buildoptions}",
+    timeout     => '600',
+    require     => [
       Exec['extract'],
       Package[$couchdb::package::dependencies]
     ],
   }
 
   exec { 'make-install':
-    cwd     => "${couchdb::cwd}/${couchdb::foldername}",
+    cwd         => "${couchdb::cwd}/${couchdb::foldername}",
     environment => 'HOME=/root',
-    command => '/usr/bin/make && /usr/bin/make install',
-    timeout => '600',
-    require => Exec['configure'],
+    command     => '/usr/bin/make && /usr/bin/make install',
+    timeout     => '600',
+    require     => Exec['configure'],
   }
 
   file {
