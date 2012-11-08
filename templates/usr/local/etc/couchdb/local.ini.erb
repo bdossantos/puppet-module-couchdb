@@ -13,7 +13,7 @@ view_index_dir = <%= @view_index_dir %>
 ;max_document_size = 4294967296 ; 4 GB
 ;os_process_timeout = 5000 ; 5 seconds. for view and external servers.
 ;max_dbs_open = 100
-;delayed_commits = true ; set this to false to ensure an fsync before 201 Created is returned
+delayed_commits = <%= @delayed_commits %> ; set this to false to ensure an fsync before 201 Created is returned
 ;uri_file = /usr/local/var/run/couchdb/couch.uri
 <% if @version == '1.2' -%>
 ; Method used to compress everything that is appended to database and view index files, except

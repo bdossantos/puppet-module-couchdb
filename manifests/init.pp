@@ -16,7 +16,8 @@ class couchdb($download = 'http://apache.cu.be/couchdb/releases/1.2.0/apache-cou
               $os_process_limit = '200',
               $uuids = 'utc_random',
               $cert_path = '/usr/local/etc/certs',
-              $ulimit = '65536') {
+              $ulimit = '65536',
+              $delayed_commits = false) {
 
   include couchdb::package,
           couchdb::install,
