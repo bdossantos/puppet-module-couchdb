@@ -31,7 +31,7 @@ Test with Vagrant + Ubuntu Lucid 32 :
 ```bash
 vagrant up
 curl 127.0.0.1:5984
-open 127.0.0.1/_utils/
+open http://127.0.0.1/_utils/
 ```
 
 ## TODO
