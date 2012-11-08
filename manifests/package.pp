@@ -46,7 +46,7 @@ class couchdb::package {
             'libtool',
           ]
           $buildoptions = $couchdb::buildopts
-	}
+        }
       }
     }
     default: {
