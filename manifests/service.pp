@@ -5,6 +5,6 @@ class couchdb::service {
     hasstatus   => true,
     hasrestart  => true,
     enable      => true,
-    require     => File['/etc/init.d/couchdb'];
+    require     => Class['couchdb::install'],
   }
 }
