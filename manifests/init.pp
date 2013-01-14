@@ -1,9 +1,9 @@
 class couchdb(
-  $download = 'http://apache.cu.be/couchdb/releases/1.2.0/apache-couchdb-1.2.0.tar.gz',
+  $download = 'http://mir2.ovh.net/ftp.apache.org/dist/couchdb/1.2.1/apache-couchdb-1.2.1.tar.gz',
   $cwd = '/usr/local/src',
-  $filename = 'apache-couchdb-1.2.0.tar.gz',
+  $filename = 'apache-couchdb-1.2.1.tar.gz',
   $extension = '.tar.gz',
-  $foldername = 'apache-couchdb-1.2.0',
+  $foldername = 'apache-couchdb-1.2.1',
   $buildopts = '',
   $rm_build_folder = false,
   $bind = '127.0.0.1',
