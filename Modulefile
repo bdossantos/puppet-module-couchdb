@@ -1,5 +1,5 @@
 name 'benjamin-couchdb'
-version '0.0.1'
+version '0.0.2'
 description 'Puppet module for configuring Apache CouchDB'
-project_page 'https://github.com/Benjamin-Ds/puppet-module-couchdb'
+project_page 'https://github.com/bdossantos/puppet-module-couchdb'
 author 'Benjamin Dos Santos'
