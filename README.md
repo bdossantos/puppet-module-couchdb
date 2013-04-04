@@ -8,7 +8,7 @@ Tested on :
 * Ubuntu Lucid 32 Bit
 * Ubuntu Precise 64 Bit
 
-With Puppet 2.6.
+With Puppet 2.6 and 2.7.
 
 Patches for other operating systems welcome.
 
@@ -54,10 +54,22 @@ node default {
 puppet apply /path/to/site.pp --modulepath /etc/puppet/modules --logdest console
 ```
 
+## Running the tests
+
+Install the dependencies using [Bundler](http://gembundler.com):
+
+```bash
+bundle install
+```
+
+Run the following command :
+
+```bash
+bundle exec rake spec
+```
+
 ## TODO
 
 * SSL cert options
 * configure builds options
 * dynamic foldername, filename, extension
-* Tests w/ rspec-puppet
-
