@@ -7,6 +7,7 @@ class couchdb(
   $buildopts = '',
   $rm_build_folder = false,
   $bind = '127.0.0.1',
+  $secure_rewrites = true,
   $basic_realm = undef,
   $require_valid_user = false,
   $admin_passwd = undef,

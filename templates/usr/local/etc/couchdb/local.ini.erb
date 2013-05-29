@@ -38,6 +38,7 @@ keyvalue_buffer_size = 2097152 ; value in bytes
 [httpd]
 port = 5984
 bind_address = <%= @bind %>
+secure_rewrites = <%= @secure_rewrites %>
 ; Options for the MochiWeb HTTP server.
 ;server_options = [{backlog, 128}, {acceptor_pool_size, 16}]
 ; For more socket options, consult Erlang's module 'inet' man page.
