@@ -1,7 +1,9 @@
 class couchdb::ssl {
 
-  package { ['openssl']:
-    ensure => installed,
+  if ! defined(Package['openssl']) {
+    package { ['openssl']:
+      ensure => installed,
+    }
   }
 
   file { $couchdb::cert_path:
